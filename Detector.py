@@ -7,10 +7,11 @@ import smtplib
 
 
 def send_email(to_email):
-    from_email = "Snipe729@gmail.com"
-    password = "Snipe.sni"  # Be cautious when storing your password
+    from_email = "missing_person_alert@yahoo.com"
+    password = "Sid1234567@"  
     subject = "Missing Person Detected"
-    message = "A missing person has been detected at the following location: "
+    message = "The Missing person you reported has been detected. Please reach out to the nearest Police station or wait for our call. "
+    to_email= "sid.rawlani@gmail.com"
 
     msg = MIMEMultipart()
     msg["From"] = from_email
@@ -22,7 +23,7 @@ def send_email(to_email):
     server.starttls()
     server.login(from_email, password)
     text = msg.as_string()
-    server.sendmail(from_email, to_email, text)
+    server.sendmail(from_email, to_email , text)
     server.quit()
 
 def main_app(name, latitude, longitude, to_email):
@@ -86,12 +87,13 @@ def main_app(name, latitude, longitude, to_email):
                     # save the image  
                     Image1copy.save("end.png") 
                     frame = cv2.imread("end.png", 1)
-                    send_email(to_email)
+                    
                     cv2.imshow("Result",frame)
                     cv2.waitKey(5000)
                     
                 break
-    
+    if pred>0:
+        send_email(to_email="sid.rawlani@gmail.com")
        
     cap.release()
     cv2.destroyAllWindows()

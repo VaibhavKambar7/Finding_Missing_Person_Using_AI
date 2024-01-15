@@ -164,6 +164,7 @@ class PageOne(tk.Frame):
         # You can retrieve the user information from the fields like this:
         name = self.user_name.get()
         to_email = self.user_email.get()
+        to_email_str = str(to_email)
         phone = self.user_phone.get()
         location = self.user_location.get()
         height = self.user_height.get()
@@ -174,7 +175,7 @@ class PageOne(tk.Frame):
         self.controller.active_name = name
         self.controller.frames["PageTwo"].refresh_names()
         self.controller.show_frame("PageThree")
-        self.controller.frames("PageFour").to_email= to_email
+        self.controller.frames("PageFour").to_email= to_email_str
 
 class PageTwo(tk.Frame):
 
